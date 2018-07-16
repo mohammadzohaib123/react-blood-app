@@ -11,6 +11,8 @@ export default class AuthActions
     static CHECK_USER_REQUEST='CHECK_USER_REQUEST';
     static CHECK_USER_SUCCESS='CHECK_USER_SUCCESS';
 
+    static UPDATE_USER_PROFILE='UPDATE_USER_PROFILE';
+
     static SIGNOUT_REQUEST='SIGNOUT_REQUEST';
     static SIGNOUT_SUCCESS='SIGNOUT_SUCCESS';
     static SIGNOUT_FAILURE='SIGNOUT_FAILURE';
@@ -50,6 +52,7 @@ export default class AuthActions
       }
     static signOutUser()
     {
+        console.log('abc')
         return{
             type:AuthActions.SIGNOUT_REQUEST,
         }

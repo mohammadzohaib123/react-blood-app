@@ -1,6 +1,7 @@
 import AuthActions from "../Actions/AuthActions";
 import {Observable} from "rxjs";
-import {createUser,sigInWithEmailAndPass, checkUser,signOutUser} from '../Firebase/FirebaseAuth';
+import {createUser,sigInWithEmailAndPass, checkUser,signOutUser,updateUserProfile} from '../Firebase/FirebaseAuth';
+
 
 export class AuthEpic {
     static createUserOnFirebase(action$) {
@@ -8,7 +9,7 @@ export class AuthEpic {
         return action$.ofType(AuthActions.SIGNUP_REQUEST).switchMap(({payload})=>{
             return Observable.fromPromise(createUser(payload)).map(()=>{
                 return{
-                    type: AuthActions.SIGNUP_SUCCESS,
+                    type: AuthActions.UPDATE_USER_PROFILE,
                     payload:payload
                 }
             }).catch((error)=>{
@@ -17,7 +18,17 @@ export class AuthEpic {
             })
         })
 
-    }   
+    }  
+    static updateUserProfile(action$){
+        return action$.ofType(AuthActions.UPDATE_USER_PROFILE).switchMap(({payload})=>{
+            return Observable.fromPromise(updateUserProfile(payload)).map(()=>{
+                return {
+                    type:AuthActions.CHECK_USER_REQUEST,
+                    
+                }
+            })
+        })
+    } 
     static signInUserOnFirebase(action$){
         console.log(action$);
         return action$.ofType(AuthActions.SIGNIN_REQUEST).switchMap(({payload})=>{

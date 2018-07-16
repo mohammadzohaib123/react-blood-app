@@ -1,16 +1,12 @@
-import firebase from 'firebase';
-var config = {
-    apiKey: "AIzaSyDzYVdQ1_3WUGciGjZImqtb_bJ1fTPXwmg",
-    authDomain: "react-blood-app-a3d1e.firebaseapp.com",
-    databaseURL: "https://react-blood-app-a3d1e.firebaseio.com",
-    projectId: "react-blood-app-a3d1e",
-    storageBucket: "react-blood-app-a3d1e.appspot.com",
-    messagingSenderId: "379899325038"
-  };
-  var fire=firebase.initializeApp(config);
+import fire from "./FirebaseConfig";
   //This function is for firebse signup
   export function createUser(payload) {
     return fire.auth().createUserWithEmailAndPassword(payload.email, payload.pass);
+  }
+  export function updateUserProfile(payload) {
+    return fire.auth().currentUser.updateProfile({
+      displayName: payload.name
+    });
   }
     //This function is for firebse login
   export function sigInWithEmailAndPass(payload){
@@ -21,9 +17,11 @@ var config = {
     return new Promise((res, rej) => {
       fire.auth().onAuthStateChanged(user => {
         if (user) {
+          console.log(' if In authstate')
             res(user)
         }
         else{
+          console.log('else of on authstate')
             res(null)
         }
       });
@@ -33,3 +31,4 @@ var config = {
   export function signOutUser(){
     return fire.auth().signOut();
   }
+

@@ -29,7 +29,7 @@ const INITIAL_STATE=
         case AuthActions.CHECK_USER_REQUEST:
         return Object.assign({},state,{isLoading:true})
         case AuthActions.CHECK_USER_SUCCESS:
-        return Object.assign({},state,{isLoading:false,isError:true,errorMsg:action.payload});
+        return Object.assign({},state,{user:action.payload,isLoading:false});
         //================================SIGNOUT_REDUCERS================================================
         case AuthActions.SIGNOUT_REQUEST:
         return Object.assign({},state,{isLoading:true});
@@ -38,6 +38,7 @@ const INITIAL_STATE=
         case AuthActions.SIGNOUT_FAILURE:
         return Object.assign({},state,{isLoading:false,isError:true,errorMsg:action.payload})
         //=================================================================================================
+
         default:
         return state;
     }

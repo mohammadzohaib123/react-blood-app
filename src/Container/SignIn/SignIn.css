@@ -1,0 +1,58 @@
+.paper{
+    height: 300px;
+    margin: 60px auto;
+    padding: 30px
+}
+
+body{
+    background-color: #DCDCDC
+}
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
+/* for input fields */
+.input::-webkit-input-placeholder {
+  color: #787575;
+}
+
+.btn{
+  cursor: pointer;
+    background-color: #f2f2f2;
+    border-style: none;
+    color: #000;
+    width: 80px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px lightgrey;
+    outline: none;
+    transition: all 5ms
+}
+.btn:hover{
+  box-shadow: 0px 0px 0px lightgrey;
+}
